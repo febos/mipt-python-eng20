@@ -1,13 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8" />
+<head>
 
-<title>Seminar01</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+
+<title>Seminar01_rus slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/simple.css" id="theme">
 
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -13021,73 +13072,133 @@ ul.typeahead-list  > li > a.pull-right {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-body {
-  overflow: visible;
-  padding: 8px;
+.reveal {
+  font-size: 160%;
 }
-
-div#notebook {
-  overflow: visible;
-  border-top: none;
-}@media print {
-  div.cell {
-    display: block;
-    page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
-  }
-  div.output { 
-    display: block;
-    page-break-inside: avoid; 
-  }
+.reveal pre {
+  width: inherit;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.reveal pre code {
+  padding: 0px;
+}
+.reveal section img {
+  border: 0px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+.reveal i {
+  font-style: normal;
+  font-family: FontAwesome;
+  font-size: 2em;
+}
+.reveal .slides {
+  text-align: left;
+}
+.reveal.fade {
+  opacity: 1;
+}
+.reveal .progress {
+  position: static;
+}
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #727272;
+}
+.reveal .controls .navigate-left.enabled:hover,
+.reveal .controls .navigate-left.enabled.enabled:hover {
+  border-right-color: #dfdfdf;
+}
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #727272;
+}
+.reveal .controls .navigate-right.enabled:hover,
+.reveal .controls .navigate-right.enabled.enabled:hover {
+  border-left-color: #dfdfdf;
+}
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #727272;
+}
+.reveal .controls .navigate-up.enabled:hover,
+.reveal .controls .navigate-up.enabled.enabled:hover {
+  border-bottom-color: #dfdfdf;
+}
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #727272;
+}
+.reveal .controls .navigate-down.enabled:hover,
+.reveal .controls .navigate-down.enabled.enabled:hover {
+  border-top-color: #dfdfdf;
+}
+.reveal .progress span {
+  background: #727272;
+}
+div.input_area {
+  padding: 0.06em;
+}
+div.code_cell {
+  background-color: transparent;
+}
+div.prompt {
+  width: 11ex;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  text-align: right;
+}
+div.output_area pre {
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+}
+div.output_prompt {
+  /* 5px right shift to account for margin in parent container */
+  margin: 5px 5px 0 0;
+}
+div.text_cell.rendered .rendered_html {
+  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
+  overflow-y: hidden;
+}
+a.anchor-link {
+  /* There is still an anchor, we are only hidding it */
+  display: none;
+}
+.rendered_html p {
+  text-align: inherit;
+}
+::-webkit-scrollbar
+{
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar *
+{
+  background:transparent;
+}
+::-webkit-scrollbar-thumb
+{
+  background: #727272 !important;
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-<!-- Loading mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration --></head>
+</head>
+
+
 <body>
-  <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
-<span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
-</pre></div>
 
-    </div>
-</div>
-</div>
-
-</div>
+<div class="reveal">
+<div class="slides">
+<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13096,7 +13207,7 @@ div#notebook {
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13119,83 +13230,84 @@ div#notebook {
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="How-to-pass-the-course">How to pass the course<a class="anchor-link" href="#How-to-pass-the-course">&#182;</a></h1><p>Exercises:</p>
+<h1 id="&#1050;&#1072;&#1082;-&#1089;&#1076;&#1072;&#1090;&#1100;-&#1082;&#1091;&#1088;&#1089;">&#1050;&#1072;&#1082; &#1089;&#1076;&#1072;&#1090;&#1100; &#1082;&#1091;&#1088;&#1089;<a class="anchor-link" href="#&#1050;&#1072;&#1082;-&#1089;&#1076;&#1072;&#1090;&#1100;-&#1082;&#1091;&#1088;&#1089;">&#182;</a></h1><p>Активности:</p>
 <ol>
-<li>Contests (6-8)<ul>
-<li>10 points each</li>
-<li>1 contest == 2 weeks</li>
+<li>Контесты (5-7)<ul>
+<li>10 баллов за каждый</li>
+<li>2 недели на контест</li>
 </ul>
 </li>
 <li>Code Review (2)<ul>
-<li>Personal code projects in <strong>several</strong> iterations</li>
-<li>Basic part</li>
-<li>Extra: up to 2 extra points per project</li>
-<li>2 weeks for the first (<strong>working!</strong>) attempt</li>
-<li>1 week per each next attempt</li>
+<li>Работа над кодом в <strong>несколько</strong> итераций</li>
+<li>Есть обязательная часть</li>
+<li>Есть бонусная часть: до 2 доп.баллов</li>
+<li>2 недели на первую (<strong>рабочую!</strong>) попытку</li>
+<li>1 неделя на каждую следующую итерацию</li>
 </ul>
 </li>
-<li>Lab work (1):<ul>
-<li>10 points</li>
-<li>Pass or fail</li>
+<li>Лабораторная работа (1):<ul>
+<li>10 баллов</li>
+<li>Необходимо набрать хотя бы 1</li>
 </ul>
 </li>
 </ol>
-<h3 id="Communication">Communication<a class="anchor-link" href="#Communication">&#182;</a></h3>
+<h2 id="&#1050;&#1086;&#1084;&#1084;&#1091;&#1085;&#1080;&#1082;&#1072;&#1094;&#1080;&#1103;">&#1050;&#1086;&#1084;&#1084;&#1091;&#1085;&#1080;&#1082;&#1072;&#1094;&#1080;&#1103;<a class="anchor-link" href="#&#1050;&#1086;&#1084;&#1084;&#1091;&#1085;&#1080;&#1082;&#1072;&#1094;&#1080;&#1103;">&#182;</a></h2>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1.-If-you've-passed-two-projects-AND-Lab-work:">1. If you've passed two projects AND Lab work:<a class="anchor-link" href="#1.-If-you've-passed-two-projects-AND-Lab-work:">&#182;</a></h2><h3 id="$\min(10,-\lfloor9-*-\frac{\text{contest}-+-\text{lab}}{\text{max_contest}-+-\text{max_lab}}-+-\text{review_bonus}-\rfloor)$">$\min(10, \lfloor9 * \frac{\text{contest} + \text{lab}}{\text{max_contest} + \text{max_lab}} + \text{review_bonus} \rfloor)$<a class="anchor-link" href="#$\min(10,-\lfloor9-*-\frac{\text{contest}-+-\text{lab}}{\text{max_contest}-+-\text{max_lab}}-+-\text{review_bonus}-\rfloor)$">&#182;</a></h3>
+<h2 id="1.-&#1045;&#1089;&#1083;&#1080;-&#1074;&#1099;-&#1089;&#1076;&#1072;&#1083;&#1080;-2-&#1088;&#1077;&#1074;&#1100;&#1102;-&#1080;-&#1083;&#1072;&#1073;&#1086;&#1088;&#1072;&#1090;&#1086;&#1088;&#1085;&#1091;&#1102;-&#1088;&#1072;&#1073;&#1086;&#1090;&#1091;">1. &#1045;&#1089;&#1083;&#1080; &#1074;&#1099; &#1089;&#1076;&#1072;&#1083;&#1080; 2 &#1088;&#1077;&#1074;&#1100;&#1102; &#1080; &#1083;&#1072;&#1073;&#1086;&#1088;&#1072;&#1090;&#1086;&#1088;&#1085;&#1091;&#1102; &#1088;&#1072;&#1073;&#1086;&#1090;&#1091;<a class="anchor-link" href="#1.-&#1045;&#1089;&#1083;&#1080;-&#1074;&#1099;-&#1089;&#1076;&#1072;&#1083;&#1080;-2-&#1088;&#1077;&#1074;&#1100;&#1102;-&#1080;-&#1083;&#1072;&#1073;&#1086;&#1088;&#1072;&#1090;&#1086;&#1088;&#1085;&#1091;&#1102;-&#1088;&#1072;&#1073;&#1086;&#1090;&#1091;">&#182;</a></h2><h3 id="$\min(10,-\lfloor9-*-\frac{\text{contest}-+-\text{lab}}{\text{max_contest}-+-\text{max_lab}}-+-\text{review_bonus}-\rfloor)$">$\min(10, \lfloor9 * \frac{\text{contest} + \text{lab}}{\text{max_contest} + \text{max_lab}} + \text{review_bonus} \rfloor)$<a class="anchor-link" href="#$\min(10,-\lfloor9-*-\frac{\text{contest}-+-\text{lab}}{\text{max_contest}-+-\text{max_lab}}-+-\text{review_bonus}-\rfloor)$">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>10 contests + 1 lab<br>
-max_points = 110</p>
-<p><strong>Case 1:</strong> You have 110 points and max extra points for projects:</p>
-<h3 id="$\min(10,-\lfloor9-*-\frac{110}{110}-+-4-\rfloor)-=-\min(10,-13)-=-10$">$\min(10, \lfloor9 * \frac{110}{110} + 4 \rfloor) = \min(10, 13) = 10$<a class="anchor-link" href="#$\min(10,-\lfloor9-*-\frac{110}{110}-+-4-\rfloor)-=-\min(10,-13)-=-10$">&#182;</a></h3><p><strong>Case 2:</strong> 55 points plus 1 extra point for each project:</p>
-<h3 id="$\lfloor9-*-\frac{55}{110}-+-2-\rfloor-=-\lfloor-6.5-\rfloor-=-6$">$\lfloor9 * \frac{55}{110} + 2 \rfloor = \lfloor 6.5 \rfloor = 6$<a class="anchor-link" href="#$\lfloor9-*-\frac{55}{110}-+-2-\rfloor-=-\lfloor-6.5-\rfloor-=-6$">&#182;</a></h3><p><strong>Case 3:</strong> 37 points and no extra points:</p>
-<h3 id="$\lfloor9-*-\frac{37}{110}-+-0-\rfloor-=-\lfloor-3.0(27)-\rfloor-=-3$">$\lfloor9 * \frac{37}{110} + 0 \rfloor = \lfloor 3.0(27) \rfloor = 3$<a class="anchor-link" href="#$\lfloor9-*-\frac{37}{110}-+-0-\rfloor-=-\lfloor-3.0(27)-\rfloor-=-3$">&#182;</a></h3><p><strong>Case 4:</strong> 36 points and no extra points:</p>
-<h3 id="$\lfloor9-*-\frac{36}{110}-+-0-\rfloor-=-\lfloor-2.9(45)-\rfloor-=-2$">$\lfloor9 * \frac{36}{110} + 0 \rfloor = \lfloor 2.9(45) \rfloor = 2$<a class="anchor-link" href="#$\lfloor9-*-\frac{36}{110}-+-0-\rfloor-=-\lfloor-2.9(45)-\rfloor-=-2$">&#182;</a></h3>
+<p><em>Например</em>, 6 контестов + 1 лаба<br>
+max_points = 70</p>
+<p><strong>Кейс 1:</strong> Вы набрали 70 баллов и получили все бонусы за ревью:</p>
+<h3 id="$\min(10,-\lfloor9-*-\frac{70}{70}-+-4-\rfloor)-=-\min(10,-13)-=-10$">$\min(10, \lfloor9 * \frac{70}{70} + 4 \rfloor) = \min(10, 13) = 10$<a class="anchor-link" href="#$\min(10,-\lfloor9-*-\frac{70}{70}-+-4-\rfloor)-=-\min(10,-13)-=-10$">&#182;</a></h3><p><strong>Кейс 2:</strong> 35 баллов и по бонусному баллу за каждое ревью:</p>
+<h3 id="$\lfloor9-*-\frac{35}{70}-+-2-\rfloor-=-\lfloor-6.5-\rfloor-=-6$">$\lfloor9 * \frac{35}{70} + 2 \rfloor = \lfloor 6.5 \rfloor = 6$<a class="anchor-link" href="#$\lfloor9-*-\frac{35}{70}-+-2-\rfloor-=-\lfloor-6.5-\rfloor-=-6$">&#182;</a></h3><p><strong>Кейс 3:</strong> 24 балла и ни одного бонусного балла:</p>
+<h3 id="$\lfloor9-*-\frac{24}{70}-+-0-\rfloor-=-\lfloor-3.0857..-\rfloor-=-3$">$\lfloor9 * \frac{24}{70} + 0 \rfloor = \lfloor 3.0857.. \rfloor = 3$<a class="anchor-link" href="#$\lfloor9-*-\frac{24}{70}-+-0-\rfloor-=-\lfloor-3.0857..-\rfloor-=-3$">&#182;</a></h3><p><strong>Кейс 4:</strong> 23 балла и ни одного бонусного балла:</p>
+<h3 id="$\lfloor9-*-\frac{23}{70}-+-0-\rfloor-=-\lfloor-2.9571..-\rfloor-=-2$">$\lfloor9 * \frac{23}{70} + 0 \rfloor = \lfloor 2.9571.. \rfloor = 2$<a class="anchor-link" href="#$\lfloor9-*-\frac{23}{70}-+-0-\rfloor-=-\lfloor-2.9571..-\rfloor-=-2$">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-If-you've-passed-one-project-AND-lab-work">2. If you've passed one project AND lab work<a class="anchor-link" href="#2.-If-you've-passed-one-project-AND-lab-work">&#182;</a></h2><p><strong>Case 1</strong>:</p>
-<h3 id="$-10-\to-7$">$ 10 \to 7$<a class="anchor-link" href="#$-10-\to-7$">&#182;</a></h3><p><strong>Case 2</strong>:</p>
-<h3 id="$-6-\to-4$">$ 6 \to 4$<a class="anchor-link" href="#$-6-\to-4$">&#182;</a></h3><p><strong>Case 3</strong>:</p>
-<h3 id="$-3-\to-2$">$ 3 \to 2$<a class="anchor-link" href="#$-3-\to-2$">&#182;</a></h3><p><strong>Case 4</strong>:</p>
-<h3 id="$-2-\to-2$">$ 2 \to 2$<a class="anchor-link" href="#$-2-\to-2$">&#182;</a></h3>
+<h2 id="2.-&#1045;&#1089;&#1083;&#1080;-&#1074;&#1099;-&#1089;&#1076;&#1072;&#1083;&#1080;-1-&#1088;&#1077;&#1074;&#1100;&#1102;-&#1048;-&#1083;&#1072;&#1073;&#1086;&#1088;&#1072;&#1090;&#1086;&#1088;&#1085;&#1091;&#1102;-&#1088;&#1072;&#1073;&#1086;&#1090;&#1091;">2. &#1045;&#1089;&#1083;&#1080; &#1074;&#1099; &#1089;&#1076;&#1072;&#1083;&#1080; 1 &#1088;&#1077;&#1074;&#1100;&#1102; &#1048; &#1083;&#1072;&#1073;&#1086;&#1088;&#1072;&#1090;&#1086;&#1088;&#1085;&#1091;&#1102; &#1088;&#1072;&#1073;&#1086;&#1090;&#1091;<a class="anchor-link" href="#2.-&#1045;&#1089;&#1083;&#1080;-&#1074;&#1099;-&#1089;&#1076;&#1072;&#1083;&#1080;-1-&#1088;&#1077;&#1074;&#1100;&#1102;-&#1048;-&#1083;&#1072;&#1073;&#1086;&#1088;&#1072;&#1090;&#1086;&#1088;&#1085;&#1091;&#1102;-&#1088;&#1072;&#1073;&#1086;&#1090;&#1091;">&#182;</a></h2><p>Верхняя грань предыдущей по пятибалльной шкале оценки</p>
+<p><strong>Кейс 1</strong>:</p>
+<h3 id="$-&#1086;&#1090;&#1083;(10)-\to-&#1093;&#1086;&#1088;(7)$">$ &#1086;&#1090;&#1083;(10) \to &#1093;&#1086;&#1088;(7)$<a class="anchor-link" href="#$-&#1086;&#1090;&#1083;(10)-\to-&#1093;&#1086;&#1088;(7)$">&#182;</a></h3><p><strong>Кейс 2</strong>:</p>
+<h3 id="$-&#1093;&#1086;&#1088;(6)-\to-&#1091;&#1076;(4)$">$ &#1093;&#1086;&#1088;(6) \to &#1091;&#1076;(4)$<a class="anchor-link" href="#$-&#1093;&#1086;&#1088;(6)-\to-&#1091;&#1076;(4)$">&#182;</a></h3><p><strong>Кейс 3</strong>:</p>
+<h3 id="$-&#1091;&#1076;(3)-\to-&#1085;&#1077;&#1091;&#1076;-(2)$">$ &#1091;&#1076;(3) \to &#1085;&#1077;&#1091;&#1076; (2)$<a class="anchor-link" href="#$-&#1091;&#1076;(3)-\to-&#1085;&#1077;&#1091;&#1076;-(2)$">&#182;</a></h3><p><strong>Кейс 4</strong>:</p>
+<h3 id="$-&#1085;&#1077;&#1091;&#1076;(2)-\to-&#1085;&#1077;&#1091;&#1076;-(2)$">$ &#1085;&#1077;&#1091;&#1076;(2) \to &#1085;&#1077;&#1091;&#1076; (2)$<a class="anchor-link" href="#$-&#1085;&#1077;&#1091;&#1076;(2)-\to-&#1085;&#1077;&#1091;&#1076;-(2)$">&#182;</a></h3>
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-If-you've-failed-both-projects-OR-you've-failed-lab-work">3. If you've failed both projects OR you've failed lab work<a class="anchor-link" href="#3.-If-you've-failed-both-projects-OR-you've-failed-lab-work">&#182;</a></h2><p><img src="images/wasted.png" align="center" style="height: 400px;"/></p>
+<h2 id="3.-&#1045;&#1089;&#1083;&#1080;-&#1074;&#1099;-&#1089;&#1076;&#1072;&#1083;&#1080;-0-&#1088;&#1077;&#1074;&#1100;&#1102;-&#1080;&#1083;&#1080;-&#1085;&#1077;-&#1089;&#1076;&#1072;&#1083;&#1080;--&#1083;&#1072;&#1073;&#1086;&#1088;&#1072;&#1090;&#1086;&#1088;&#1085;&#1091;&#1102;-&#1088;&#1072;&#1073;&#1086;&#1090;&#1091;-(==-&#1085;&#1072;&#1073;&#1088;&#1072;&#1083;&#1080;-0-&#1073;&#1072;&#1083;&#1083;&#1086;&#1074;)">3. &#1045;&#1089;&#1083;&#1080; &#1074;&#1099; &#1089;&#1076;&#1072;&#1083;&#1080; 0 &#1088;&#1077;&#1074;&#1100;&#1102; &#1080;&#1083;&#1080; &#1085;&#1077; &#1089;&#1076;&#1072;&#1083;&#1080;  &#1083;&#1072;&#1073;&#1086;&#1088;&#1072;&#1090;&#1086;&#1088;&#1085;&#1091;&#1102; &#1088;&#1072;&#1073;&#1086;&#1090;&#1091; (== &#1085;&#1072;&#1073;&#1088;&#1072;&#1083;&#1080; 0 &#1073;&#1072;&#1083;&#1083;&#1086;&#1074;)<a class="anchor-link" href="#3.-&#1045;&#1089;&#1083;&#1080;-&#1074;&#1099;-&#1089;&#1076;&#1072;&#1083;&#1080;-0-&#1088;&#1077;&#1074;&#1100;&#1102;-&#1080;&#1083;&#1080;-&#1085;&#1077;-&#1089;&#1076;&#1072;&#1083;&#1080;--&#1083;&#1072;&#1073;&#1086;&#1088;&#1072;&#1090;&#1086;&#1088;&#1085;&#1091;&#1102;-&#1088;&#1072;&#1073;&#1086;&#1090;&#1091;-(==-&#1085;&#1072;&#1073;&#1088;&#1072;&#1083;&#1080;-0-&#1073;&#1072;&#1083;&#1083;&#1086;&#1074;)">&#182;</a></h2><p><img src="images/wasted.png" align="center" style="height: 400px;"/></p>
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Intro">Intro<a class="anchor-link" href="#Intro">&#182;</a></h1><p><img src="images/guido.jpg" align="right" style="height: 400px;"/></p>
-<p>Python was conceived in the late 1980s by Guido van Rossum in the Netherlands.
-An important goal of Python's developers is keeping it fun to use. This is reflected in the language's name—a tribute to the British comedy group Monty Python</p>
-<p>Major versions:</p>
+<p>Язык Python разрабатывался Гвидо ван Россумом с 1989 г.
+Назван в честь популярного британского комедийного телешоу 1970-х "Летающий цирк Монти Пайтона"</p>
+<p>Мажорные версии:</p>
 <ul>
-<li>Python 1.0 — January 1994</li>
+<li>Python 1.0 — январь 1994</li>
 <li>Python 2.0 — 16.10.2000<ul>
 <li>Python 2.7 - 3.07.2010</li>
 </ul>
@@ -13207,60 +13319,62 @@ An important goal of Python's developers is keeping it fun to use. This is refle
 </ul>
 </li>
 </ul>
-<p>Are maintained now Python 2.x and Python 3.x:</p>
+<p>Сейчас поддерживаются Python 2.x и Python 3.x:</p>
 <ul>
-<li>Syntactically incompatible</li>
-<li>Python 2.7 will not be maintained past 2020 (<a href="https://pythonclock.org">https://pythonclock.org</a>)</li>
+<li>Синтаксически несовместимы</li>
+<li><strong>Поддержка 2.x прекратится в апреле 2020</strong></li>
 </ul>
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Python-vs-C++:">Python vs C++:<a class="anchor-link" href="#Python-vs-C++:">&#182;</a></h1><h2 id="Interpretability-vs-Compilability">Interpretability vs Compilability<a class="anchor-link" href="#Interpretability-vs-Compilability">&#182;</a></h2><ul>
-<li><p>In compiled languages, the program code must be compiled into the executable code. This code will then execute something that knows nothing about the original programming language.</p>
+<h1 id="Python-vs-C++:">Python vs C++:<a class="anchor-link" href="#Python-vs-C++:">&#182;</a></h1><h2 id="&#1048;&#1085;&#1090;&#1077;&#1088;&#1087;&#1088;&#1077;&#1090;&#1080;&#1088;&#1091;&#1077;&#1084;&#1086;&#1089;&#1090;&#1100;-vs-&#1050;&#1086;&#1084;&#1087;&#1080;&#1083;&#1080;&#1088;&#1091;&#1077;&#1084;&#1086;&#1089;&#1090;&#1100;">&#1048;&#1085;&#1090;&#1077;&#1088;&#1087;&#1088;&#1077;&#1090;&#1080;&#1088;&#1091;&#1077;&#1084;&#1086;&#1089;&#1090;&#1100; vs &#1050;&#1086;&#1084;&#1087;&#1080;&#1083;&#1080;&#1088;&#1091;&#1077;&#1084;&#1086;&#1089;&#1090;&#1100;<a class="anchor-link" href="#&#1048;&#1085;&#1090;&#1077;&#1088;&#1087;&#1088;&#1077;&#1090;&#1080;&#1088;&#1091;&#1077;&#1084;&#1086;&#1089;&#1090;&#1100;-vs-&#1050;&#1086;&#1084;&#1087;&#1080;&#1083;&#1080;&#1088;&#1091;&#1077;&#1084;&#1086;&#1089;&#1090;&#1100;">&#182;</a></h2><ul>
+<li><p>В компилируемых языках код программы нужно скомпилировать в т.н. исполняемый код. Этот код затем будет исполнять нечто, что ничего не знает про исходный язык программирования.</p>
 </li>
-<li><p>In the interpreted language, the executor is the program itself, which analyzes the source code. Python is an interpreted language (and the executor of the code is a program called "python"). Several important properties follow from this:
-    - Most errors occur at the program execution stage
-    - More flexible and dense code</p>
+<li><p>В интерпретируемом же языке исполнителем является сама программа, которая анализирует исходный код. Python - интерпретируемый язык (и исполнителем кода на нём является программа под названием "python"). Из этого следуют несколько важных свойств:</p>
+<ul>
+<li>Большинство ошибок возникает на этапе выполнения программы</li>
+<li>Более гибкий и плотный код</li>
+</ul>
 </li>
 </ul>
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Strong-vs-dynamic-typing">Strong vs dynamic typing<a class="anchor-link" href="#Strong-vs-dynamic-typing">&#182;</a></h2><ul>
-<li>Strong: Each object has one specific type; it doesn’t happen that we don’t know what type of object it is, or that the object belongs to some “undefined type” that will be resolved later, or that we have objects of a certain “universal” type.</li>
-<li>Dynamic: We almost cannot in any way understand from the source code of the program what type of object is in this expression. At least we cannot understand exactly. To find out, you need to interpret the entire program from the very beginning to this expression.</li>
+<h2 id="&#1057;&#1080;&#1083;&#1100;&#1085;&#1072;&#1103;-&#1076;&#1080;&#1085;&#1072;&#1084;&#1080;&#1095;&#1077;&#1089;&#1082;&#1072;&#1103;-&#1090;&#1080;&#1087;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103;">&#1057;&#1080;&#1083;&#1100;&#1085;&#1072;&#1103; &#1076;&#1080;&#1085;&#1072;&#1084;&#1080;&#1095;&#1077;&#1089;&#1082;&#1072;&#1103; &#1090;&#1080;&#1087;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103;<a class="anchor-link" href="#&#1057;&#1080;&#1083;&#1100;&#1085;&#1072;&#1103;-&#1076;&#1080;&#1085;&#1072;&#1084;&#1080;&#1095;&#1077;&#1089;&#1082;&#1072;&#1103;-&#1090;&#1080;&#1087;&#1080;&#1079;&#1072;&#1094;&#1080;&#1103;">&#182;</a></h2><ul>
+<li>Сильная: У каждого объекта есть один конкретный тип; не бывает так, что мы не знаем, какого типа объект, или что объект относится к некоторому "неопределённому типу", который будет разрешён впоследствии, или что у нас есть объекты некого "универсального" типа.</li>
+<li>Динамическая: Мы <em>почти</em> никак не можем из исходного кода программы понять, какого типа объект в данном выражении. По крайней мере, не можем понять в точности. Чтобы это выяснить, нужно проинтерпретировать всю программу с самого начала до данного выражения.</li>
 </ul>
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="memory-management">memory management<a class="anchor-link" href="#memory-management">&#182;</a></h2><p>No need to monitor allocated memory and clean it up: objects are deleted when there are no links to them. However, memory can still be overloaded.</p>
-<p>For details see <a href="https://www.geeksforgeeks.org/garbage-collection-python/">https://www.geeksforgeeks.org/garbage-collection-python/</a></p>
+<h2 id="&#1059;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077;-&#1087;&#1072;&#1084;&#1103;&#1090;&#1100;&#1102;">&#1059;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077; &#1087;&#1072;&#1084;&#1103;&#1090;&#1100;&#1102;<a class="anchor-link" href="#&#1059;&#1087;&#1088;&#1072;&#1074;&#1083;&#1077;&#1085;&#1080;&#1077;-&#1087;&#1072;&#1084;&#1103;&#1090;&#1100;&#1102;">&#182;</a></h2><p>Не нужно следить за выделяемой памятью и чистить за собой: объекты удаляются тогда, когда на них нет ссылок. Тем не менее, забить память все еще можно.</p>
+<p>Детали см., например, здесь: <a href="https://www.geeksforgeeks.org/garbage-collection-python/">https://www.geeksforgeeks.org/garbage-collection-python/</a></p>
 
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Python-Zen">Python Zen<a class="anchor-link" href="#Python-Zen">&#182;</a></h1>
+<h1 id="&#1044;&#1079;&#1077;&#1085;-&#1055;&#1080;&#1090;&#1086;&#1085;&#1072;">&#1044;&#1079;&#1077;&#1085; &#1055;&#1080;&#1090;&#1086;&#1085;&#1072;<a class="anchor-link" href="#&#1044;&#1079;&#1077;&#1085;-&#1055;&#1080;&#1090;&#1086;&#1085;&#1072;">&#182;</a></h1>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">this</span>
@@ -13308,24 +13422,31 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-to-run-something-in-Python">How to run something in Python<a class="anchor-link" href="#How-to-run-something-in-Python">&#182;</a></h2><ul>
-<li>shell interpreter</li>
-<li>run script</li>
-<li>advanced shell interpreters (ipython, jupyter-notebook)</li>
-<li>Basic gui editor (idle)</li>
-<li>Advanced IDE (pycharm)</li>
+<h2 id="&#1050;&#1072;&#1082;-&#1079;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1090;&#1100;-&#1095;&#1090;&#1086;-&#1090;&#1086;-&#1085;&#1072;-Python">&#1050;&#1072;&#1082; &#1079;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1090;&#1100; &#1095;&#1090;&#1086;-&#1090;&#1086; &#1085;&#1072; Python<a class="anchor-link" href="#&#1050;&#1072;&#1082;-&#1079;&#1072;&#1087;&#1091;&#1089;&#1090;&#1080;&#1090;&#1100;-&#1095;&#1090;&#1086;-&#1090;&#1086;-&#1085;&#1072;-Python">&#182;</a></h2><ul>
+<li>Интерпретатор командной строки</li>
+<li>Запуск интерпретации файла</li>
+<li>Продвинутые интерпретаторы командной строки (ipython, ipython-notebook)</li>
+<li>Базовый редактор (idle)</li>
+<li>Продвинутые IDE (pycharm)</li>
 </ul>
 
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="&#1054;&#1089;&#1085;&#1086;&#1074;&#1085;&#1099;&#1077;-&#1090;&#1080;&#1087;&#1099;">&#1054;&#1089;&#1085;&#1086;&#1074;&#1085;&#1099;&#1077; &#1090;&#1080;&#1087;&#1099;<a class="anchor-link" href="#&#1054;&#1089;&#1085;&#1086;&#1074;&#1085;&#1099;&#1077;-&#1090;&#1080;&#1087;&#1099;">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="mi">42</span>
@@ -13345,7 +13466,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -13358,7 +13479,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -13371,7 +13492,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -13384,7 +13505,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -13398,10 +13519,10 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
@@ -13421,7 +13542,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -13434,7 +13555,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -13447,7 +13568,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -13460,7 +13581,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -13473,7 +13594,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -13487,17 +13608,17 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Arithmetic">Arithmetic<a class="anchor-link" href="#Arithmetic">&#182;</a></h2>
+<h2 id="&#1040;&#1088;&#1080;&#1092;&#1084;&#1077;&#1090;&#1080;&#1082;&#1072;">&#1040;&#1088;&#1080;&#1092;&#1084;&#1077;&#1090;&#1080;&#1082;&#1072;<a class="anchor-link" href="#&#1040;&#1088;&#1080;&#1092;&#1084;&#1077;&#1090;&#1080;&#1082;&#1072;">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">6</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
@@ -13517,7 +13638,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13530,7 +13651,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13543,7 +13664,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13556,7 +13677,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13569,7 +13690,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13583,17 +13704,17 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Bitwise-operators">Bitwise operators<a class="anchor-link" href="#Bitwise-operators">&#182;</a></h2>
+<h1 id="Bitwise-operators">Bitwise operators<a class="anchor-link" href="#Bitwise-operators">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span>            <span class="c1">#  60 = 0011 1100 </span>
@@ -13635,7 +13756,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13648,7 +13769,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13661,7 +13782,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13674,7 +13795,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13687,7 +13808,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13700,7 +13821,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13714,17 +13835,17 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Binding-operator-(assignment-operator)">Binding operator (assignment operator)<a class="anchor-link" href="#Binding-operator-(assignment-operator)">&#182;</a></h2>
+<h2 id="&#1054;&#1087;&#1077;&#1088;&#1072;&#1090;&#1086;&#1088;-&#1089;&#1074;&#1103;&#1079;&#1099;&#1074;&#1072;&#1085;&#1080;&#1103;">&#1054;&#1087;&#1077;&#1088;&#1072;&#1090;&#1086;&#1088; &#1089;&#1074;&#1103;&#1079;&#1099;&#1074;&#1072;&#1085;&#1080;&#1103;<a class="anchor-link" href="#&#1054;&#1087;&#1077;&#1088;&#1072;&#1090;&#1086;&#1088;-&#1089;&#1074;&#1103;&#1079;&#1099;&#1074;&#1072;&#1085;&#1080;&#1103;">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10000</span>
@@ -13744,7 +13865,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -13757,26 +13878,26 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>139837562406000</pre>
+<pre>140004796030480</pre>
 </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>139837562406000</pre>
+<pre>140004796030480</pre>
 </div>
 
 </div>
@@ -13784,13 +13905,13 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Another way to do that</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># А можно так</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">500</span>
 <span class="n">x</span>
 <span class="n">y</span>
@@ -13807,7 +13928,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -13820,7 +13941,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -13833,7 +13954,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -13847,10 +13968,10 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10000</span>
@@ -13870,7 +13991,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -13883,26 +14004,26 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>140471016410256</pre>
+<pre>140004796030032</pre>
 </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>140471016409232</pre>
+<pre>140004796029712</pre>
 </div>
 
 </div>
@@ -13910,10 +14031,10 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">123</span>
@@ -13921,7 +14042,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
 <span class="nb">id</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="nb">id</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="c1"># An example of the fact that numbers up to 256 are singleton objects &quot;included&quot; in the execution environment</span>
+<span class="c1"># Пример того, что числа до 256 - это синглтон-объекты, &quot;вшитые&quot; в окружение исполнения </span>
 </pre></div>
 
     </div>
@@ -13934,7 +14055,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -13947,26 +14068,26 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>10108992</pre>
+<pre>10915072</pre>
 </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>10108992</pre>
+<pre>10915072</pre>
 </div>
 
 </div>
@@ -13974,24 +14095,24 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Containers">Containers<a class="anchor-link" href="#Containers">&#182;</a></h2>
+<h2 id="&#1050;&#1086;&#1085;&#1090;&#1077;&#1081;&#1085;&#1077;&#1088;&#1099;">&#1050;&#1086;&#1085;&#1090;&#1077;&#1081;&#1085;&#1077;&#1088;&#1099;<a class="anchor-link" href="#&#1050;&#1086;&#1085;&#1090;&#1077;&#1081;&#1085;&#1077;&#1088;&#1099;">&#182;</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;abcdef&#39;</span>                <span class="c1"># str</span>
 <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;abc&#39;</span><span class="p">]</span>      <span class="c1"># list</span>
 <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>          <span class="c1"># tuple</span>
-<span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>               <span class="c1"># set</span>
-<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">}</span>  <span class="c1"># dict</span>
+<span class="n">S</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>               <span class="c1"># set</span>
+<span class="n">D</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">}</span>  <span class="c1"># dict</span>
 </pre></div>
 
     </div>
@@ -14001,7 +14122,96 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>str</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>list</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>tuple</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>set</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dict</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># List</span>
@@ -14022,7 +14232,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -14035,7 +14245,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -14049,10 +14259,10 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;cannot&#39;</span><span class="p">,</span> <span class="s1">&#39;be&#39;</span><span class="p">,</span> <span class="s1">&#39;modified&#39;</span><span class="p">)</span>
@@ -14076,7 +14286,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-11-0ac23e849d51&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">&lt;ipython-input-14-0ac23e849d51&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> t <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;i&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;cannot&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;be&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;modified&#39;</span><span class="ansi-blue-fg">)</span>
 <span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>t<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;can&#39;</span>
 
@@ -14090,7 +14300,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="p">()</span>
@@ -14107,7 +14317,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -14121,10 +14331,10 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Dictionary:</span>
@@ -14145,7 +14355,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[1]:</div>
 
 
 
@@ -14162,10 +14372,10 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Множество</span>
 <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
 </pre></div>
 
@@ -14179,7 +14389,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[14]:</div>
+    <div class="prompt output_prompt">Out[16]:</div>
 
 
 
@@ -14193,10 +14403,10 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">empty_what</span> <span class="o">=</span> <span class="p">{}</span>
@@ -14213,7 +14423,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[15]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -14227,10 +14437,10 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">empty_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -14241,11 +14451,11 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Arithmetic-with-various-types">Arithmetic with various types<a class="anchor-link" href="#Arithmetic-with-various-types">&#182;</a></h2>
+<h2 id="&#1040;&#1088;&#1080;&#1092;&#1084;&#1077;&#1090;&#1080;&#1082;&#1072;-c-&#1088;&#1072;&#1079;&#1085;&#1099;&#1084;&#1080;-&#1090;&#1080;&#1087;&#1072;&#1084;&#1080;">&#1040;&#1088;&#1080;&#1092;&#1084;&#1077;&#1090;&#1080;&#1082;&#1072; c &#1088;&#1072;&#1079;&#1085;&#1099;&#1084;&#1080; &#1090;&#1080;&#1087;&#1072;&#1084;&#1080;<a class="anchor-link" href="#&#1040;&#1088;&#1080;&#1092;&#1084;&#1077;&#1090;&#1080;&#1082;&#1072;-c-&#1088;&#1072;&#1079;&#1085;&#1099;&#1084;&#1080;-&#1090;&#1080;&#1087;&#1072;&#1084;&#1080;">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14314,7 +14524,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
@@ -14380,11 +14590,11 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Cast-(type-conversion)">Cast (type conversion)<a class="anchor-link" href="#Cast-(type-conversion)">&#182;</a></h2>
+<h2 id="&#1055;&#1088;&#1080;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1077;-&#1090;&#1080;&#1087;&#1086;&#1074;">&#1055;&#1088;&#1080;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1077; &#1090;&#1080;&#1087;&#1086;&#1074;<a class="anchor-link" href="#&#1055;&#1088;&#1080;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1077;-&#1090;&#1080;&#1087;&#1086;&#1074;">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14487,7 +14697,7 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
@@ -14556,13 +14766,13 @@ Namespaces are one honking great idea -- let&#39;s do more of those!
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Features of float numbers</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Плюшки вещественных чисел</span>
 
 <span class="n">num</span> <span class="o">=</span> <span class="mi">100_000_000</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -14602,13 +14812,13 @@ nan
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Complex numbers</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Комплексные числа</span>
 
 <span class="n">num</span> <span class="o">=</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
@@ -14645,7 +14855,7 @@ nan
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[26]:</div>
@@ -14747,13 +14957,13 @@ nan
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Peculiarity of tuple</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Особенность кортежа</span>
 
 <span class="n">tup</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">tup</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">tup</span><span class="p">))</span>
@@ -14785,11 +14995,11 @@ nan
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conversion-to-bool">Conversion to bool<a class="anchor-link" href="#Conversion-to-bool">&#182;</a></h2>
+<h2 id="&#1055;&#1088;&#1080;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1077;-&#1082;-bool">&#1055;&#1088;&#1080;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1077; &#1082; bool<a class="anchor-link" href="#&#1055;&#1088;&#1080;&#1074;&#1077;&#1076;&#1077;&#1085;&#1080;&#1077;-&#1082;-bool">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14914,7 +15124,7 @@ nan
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[31]:</div>
@@ -15055,7 +15265,7 @@ nan
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[34]:</div>
@@ -15105,11 +15315,64 @@ nan
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">bool</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
 <span class="nb">bool</span><span class="p">({})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="&#1057;&#1088;&#1072;&#1074;&#1085;&#1077;&#1085;&#1080;&#1103;">&#1057;&#1088;&#1072;&#1074;&#1085;&#1077;&#1085;&#1080;&#1103;<a class="anchor-link" href="#&#1057;&#1088;&#1072;&#1074;&#1085;&#1077;&#1085;&#1080;&#1103;">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">1</span>
 </pre></div>
 
     </div>
@@ -15133,36 +15396,16 @@ nan
 
 </div>
 
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[35]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>False</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Comparisons">Comparisons<a class="anchor-link" href="#Comparisons">&#182;</a></h2>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="mi">5</span>
 </pre></div>
 
     </div>
@@ -15195,7 +15438,7 @@ nan
 <div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">2</span> <span class="o">&lt;=</span> <span class="mi">5</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
 </pre></div>
 
     </div>
@@ -15214,7 +15457,7 @@ nan
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
+<pre>False</pre>
 </div>
 
 </div>
@@ -15228,7 +15471,7 @@ nan
 <div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span>
 </pre></div>
 
     </div>
@@ -15247,7 +15490,7 @@ nan
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>False</pre>
+<pre>True</pre>
 </div>
 
 </div>
@@ -15255,13 +15498,13 @@ nan
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;a&#39;</span> <span class="o">&gt;</span> <span class="s1">&#39;b&#39;</span>  <span class="c1"># строки сравниваются лексикографически: по номеру буквы в алфавите</span>
 </pre></div>
 
     </div>
@@ -15280,7 +15523,7 @@ nan
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
+<pre>False</pre>
 </div>
 
 </div>
@@ -15294,7 +15537,7 @@ nan
 <div class="prompt input_prompt">In&nbsp;[40]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;a&#39;</span> <span class="o">&gt;</span> <span class="s1">&#39;b&#39;</span>  <span class="c1"># strings are compared lexicographically: by letter number in the alphabet</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;aa&#39;</span> <span class="o">&gt;</span> <span class="s1">&#39;ab&#39;</span>  <span class="c1"># буквы сравниваются по очереди</span>
 </pre></div>
 
     </div>
@@ -15321,44 +15564,11 @@ nan
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;aa&#39;</span> <span class="o">&gt;</span> <span class="s1">&#39;ab&#39;</span>  <span class="c1"># letters are compared in order</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[41]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>False</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Boolean-algebra">Boolean algebra<a class="anchor-link" href="#Boolean-algebra">&#182;</a></h2><table>
+<h2 id="&#1041;&#1091;&#1083;&#1077;&#1074;&#1072;-&#1072;&#1083;&#1075;&#1077;&#1073;&#1088;&#1072;">&#1041;&#1091;&#1083;&#1077;&#1074;&#1072; &#1072;&#1083;&#1075;&#1077;&#1073;&#1088;&#1072;<a class="anchor-link" href="#&#1041;&#1091;&#1083;&#1077;&#1074;&#1072;-&#1072;&#1083;&#1075;&#1077;&#1073;&#1088;&#1072;">&#182;</a></h2><table>
 <thead><tr>
 <th>A</th>
 <th>B</th>
@@ -15399,10 +15609,43 @@ nan
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kc">True</span> <span class="ow">and</span> <span class="kc">False</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[41]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span>
 </pre></div>
 
     </div>
@@ -15421,7 +15664,7 @@ nan
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>False</pre>
+<pre>True</pre>
 </div>
 
 </div>
@@ -15435,7 +15678,7 @@ nan
 <div class="prompt input_prompt">In&nbsp;[43]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="ow">not</span> <span class="kc">True</span>
 </pre></div>
 
     </div>
@@ -15454,39 +15697,6 @@ nan
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="ow">not</span> <span class="kc">True</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[44]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
 <pre>False</pre>
 </div>
 
@@ -15495,11 +15705,11 @@ nan
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Applicable to objects!</p>
+<p>Применимо и к объектам!</p>
 <table>
 <thead><tr>
 <th>bool(A)</th>
@@ -15529,10 +15739,43 @@ nan
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="p">[]</span> <span class="ow">and</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[44]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;&#39;</span> <span class="ow">or</span> <span class="s1">&#39;spam&#39;</span>
 </pre></div>
 
     </div>
@@ -15551,7 +15794,7 @@ nan
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[]</pre>
+<pre>&#39;spam&#39;</pre>
 </div>
 
 </div>
@@ -15565,39 +15808,6 @@ nan
 <div class="prompt input_prompt">In&nbsp;[46]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;&#39;</span> <span class="ow">or</span> <span class="s1">&#39;spam&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[46]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;spam&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
-<div class="inner_cell">
-    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kc">None</span> <span class="ow">and</span> <span class="kc">True</span>
 </pre></div>
 
@@ -15608,7 +15818,7 @@ nan
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kc">None</span> <span class="ow">or</span> <span class="kc">False</span>
@@ -15624,7 +15834,7 @@ nan
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[48]:</div>
+    <div class="prompt output_prompt">Out[47]:</div>
 
 
 
@@ -15638,11 +15848,11 @@ nan
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Input-Output">Input-Output<a class="anchor-link" href="#Input-Output">&#182;</a></h2>
+<h2 id="&#1042;&#1074;&#1086;&#1076;-&#1074;&#1099;&#1074;&#1086;&#1076;">&#1042;&#1074;&#1086;&#1076;-&#1074;&#1099;&#1074;&#1086;&#1076;<a class="anchor-link" href="#&#1042;&#1074;&#1086;&#1076;-&#1074;&#1099;&#1074;&#1086;&#1076;">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15668,7 +15878,7 @@ nan
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>12
+<pre>123
 </pre>
 </div>
 </div>
@@ -15681,7 +15891,7 @@ nan
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;12&#39;</pre>
+<pre>&#39;123&#39;</pre>
 </div>
 
 </div>
@@ -15692,7 +15902,7 @@ nan
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">345</span><span class="p">)</span>
@@ -15720,10 +15930,10 @@ nan
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
@@ -15755,36 +15965,37 @@ end</pre>
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="You'll-have-to-create-a-Yandex-account-in-order-to-participate-in-contests!!">You'll have to create a Yandex account in order to participate in contests!!<a class="anchor-link" href="#You'll-have-to-create-a-Yandex-account-in-order-to-participate-in-contests!!">&#182;</a></h1><h2 id="First-contest:-https://contest.yandex.ru/contest/19518/enter/">First contest: <a href="https://contest.yandex.ru/contest/19518/enter/">https://contest.yandex.ru/contest/19518/enter/</a><a class="anchor-link" href="#First-contest:-https://contest.yandex.ru/contest/19518/enter/">&#182;</a></h2><h2 id="Repository-with-lecture-notes-and-everything:-https://febos.github.io/mipt-python-eng20">Repository with lecture notes and everything: <a href="https://febos.github.io/mipt-python-eng20">https://febos.github.io/mipt-python-eng20</a><a class="anchor-link" href="#Repository-with-lecture-notes-and-everything:-https://febos.github.io/mipt-python-eng20">&#182;</a></h2>
+<h1 id="&#1044;&#1083;&#1103;-&#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1103;-&#1082;&#1086;&#1085;&#1090;&#1077;&#1089;&#1090;&#1086;&#1074;-&#1074;&#1072;&#1084;-&#1087;&#1086;&#1085;&#1072;&#1076;&#1086;&#1073;&#1080;&#1090;&#1089;&#1103;-&#1071;&#1085;&#1076;&#1077;&#1082;&#1089;-&#1072;&#1082;&#1082;&#1072;&#1091;&#1085;&#1090;!!">&#1044;&#1083;&#1103; &#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1103; &#1082;&#1086;&#1085;&#1090;&#1077;&#1089;&#1090;&#1086;&#1074; &#1074;&#1072;&#1084; &#1087;&#1086;&#1085;&#1072;&#1076;&#1086;&#1073;&#1080;&#1090;&#1089;&#1103; &#1071;&#1085;&#1076;&#1077;&#1082;&#1089;-&#1072;&#1082;&#1082;&#1072;&#1091;&#1085;&#1090;!!<a class="anchor-link" href="#&#1044;&#1083;&#1103;-&#1074;&#1099;&#1087;&#1086;&#1083;&#1085;&#1077;&#1085;&#1080;&#1103;-&#1082;&#1086;&#1085;&#1090;&#1077;&#1089;&#1090;&#1086;&#1074;-&#1074;&#1072;&#1084;-&#1087;&#1086;&#1085;&#1072;&#1076;&#1086;&#1073;&#1080;&#1090;&#1089;&#1103;-&#1071;&#1085;&#1076;&#1077;&#1082;&#1089;-&#1072;&#1082;&#1082;&#1072;&#1091;&#1085;&#1090;!!">&#182;</a></h1><h2 id="&#1055;&#1077;&#1088;&#1074;&#1099;&#1081;-&#1082;&#1086;&#1085;&#1090;&#1077;&#1089;&#1090;:-https://contest.yandex.ru/contest/19518/enter/">&#1055;&#1077;&#1088;&#1074;&#1099;&#1081; &#1082;&#1086;&#1085;&#1090;&#1077;&#1089;&#1090;: <a href="https://contest.yandex.ru/contest/19518/enter/">https://contest.yandex.ru/contest/19518/enter/</a><a class="anchor-link" href="#&#1055;&#1077;&#1088;&#1074;&#1099;&#1081;-&#1082;&#1086;&#1085;&#1090;&#1077;&#1089;&#1090;:-https://contest.yandex.ru/contest/19518/enter/">&#182;</a></h2><h2 id="&#1056;&#1077;&#1087;&#1086;&#1079;&#1080;&#1090;&#1086;&#1088;&#1080;&#1081;-&#1089;-&#1082;&#1086;&#1085;&#1089;&#1087;&#1077;&#1082;&#1090;&#1072;&#1084;&#1080;:-https://febos.github.io/mipt-python-eng20">&#1056;&#1077;&#1087;&#1086;&#1079;&#1080;&#1090;&#1086;&#1088;&#1080;&#1081; &#1089; &#1082;&#1086;&#1085;&#1089;&#1087;&#1077;&#1082;&#1090;&#1072;&#1084;&#1080;: <a href="https://febos.github.io/mipt-python-eng20">https://febos.github.io/mipt-python-eng20</a><a class="anchor-link" href="#&#1056;&#1077;&#1087;&#1086;&#1079;&#1080;&#1090;&#1086;&#1088;&#1080;&#1081;-&#1089;-&#1082;&#1086;&#1085;&#1089;&#1087;&#1077;&#1082;&#1090;&#1072;&#1084;&#1080;:-https://febos.github.io/mipt-python-eng20">&#182;</a></h2>
 </div>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># I&#39;m a single-string comment</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Я однострочный комментарий</span>
 
-<span class="sd">&#39;&#39;&#39;I am</span>
-<span class="sd">a multi-string </span>
-<span class="sd">comment</span>
+<span class="sd">&#39;&#39;&#39;Я </span>
+<span class="sd">многострочный </span>
+<span class="sd">комментарий</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
 
-<span class="n">stroka</span> <span class="o">=</span> <span class="s2">&quot;i&#39;m string&quot;</span>
+<span class="n">stroka</span> <span class="o">=</span> <span class="s2">&quot;я строка&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stroka</span><span class="p">)</span>
 
-<span class="n">stroka</span> <span class="o">=</span> <span class="s1">&#39;i</span><span class="se">\&#39;</span><span class="s1">m string&#39;</span>
+<span class="n">stroka</span> <span class="o">=</span> <span class="s1">&#39;я строка&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stroka</span><span class="p">)</span>
 
-<span class="n">stroka</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;and </span>
-<span class="s1">me </span>
-<span class="s1">too!&#39;&#39;&#39;</span>
+<span class="n">stroka</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;и </span>
+<span class="s1">я </span>
+<span class="s1">тоже</span>
+<span class="s1">строка&#39;&#39;&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stroka</span><span class="p">)</span>
 </pre></div>
 
@@ -15798,28 +16009,16 @@ end</pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[9]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;I am\na multi-string \ncomment\n&#39;</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
     <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>i&#39;m string
-i&#39;m string
-and 
-me 
-too!
+<pre>я строка
+я строка
+и 
+я 
+тоже
+строка
 </pre>
 </div>
 </div>
@@ -15827,50 +16026,50 @@ too!
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># working with files</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># работа с файлами</span>
 
-<span class="n">file1</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;input.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>  <span class="c1"># open file for reading</span>
-<span class="n">file2</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output.txt&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>  <span class="c1"># open file for writing</span>
+<span class="n">file1</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;input.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>  <span class="c1"># открываем файл на чтение</span>
+<span class="n">file2</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output.txt&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>  <span class="c1"># открываем файл на запись</span>
 
-<span class="c1"># file = open(&#39;input.txt&#39;, &#39;a&#39;)  # open file for appending</span>
-<span class="c1"># file = open(&#39;input.txt&#39;, &#39;r+&#39;) # open file for reading and writing (read and write from the beginning)</span>
-<span class="c1"># file = open(&#39;input.txt&#39;, &#39;a+&#39;) # open file for reading and appending (read from the beginning, write below the last line)</span>
+<span class="c1"># file = open(&#39;input.txt&#39;, &#39;a&#39;)  # открываем файл на дозапись</span>
+<span class="c1"># file = open(&#39;input.txt&#39;, &#39;r+&#39;) # открываем файл на чтение и запись (читаем и пишем сначала)</span>
+<span class="c1"># file = open(&#39;input.txt&#39;, &#39;a+&#39;) # открываем файл на чтение и дозапись (читаем сначала, пишем в конец)</span>
 
-<span class="n">line</span>  <span class="o">=</span> <span class="n">file1</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>  <span class="c1"># reading a line</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">file1</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>  <span class="c1"># reading all lines into list</span>
+<span class="n">line</span> <span class="o">=</span> <span class="n">file1</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>  <span class="c1"># читаем строку файла</span>
+<span class="n">line</span> <span class="o">=</span> <span class="n">file1</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>  <span class="c1"># читаем файл в список строк</span>
 
-<span class="n">file1</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Closing file 1</span>
-<span class="n">file2</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Closing file 2</span>
+<span class="n">file1</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Закрываем файл 1</span>
+<span class="n">file2</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Закрываем файл 2</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Be careful using boolean types as dictionary keys</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Будьте аккуратнее, используя булевы типы в качестве ключей словаря</span>
 
-<span class="c1"># Since</span>
+<span class="c1"># Поскольку</span>
 <span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># And</span>
+<span class="c1"># И</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">hash</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> <span class="o">==</span> <span class="nb">hash</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
-<span class="c1"># So when creating such a dictionary we get something bad</span>
+<span class="c1"># То при создании такого словаря получаем что-то плохое</span>
 <span class="nb">print</span><span class="p">({</span><span class="kc">True</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">4</span><span class="p">})</span>
 
-<span class="c1"># The same with False and 0</span>
+<span class="c1"># C False и 0 - то же самое</span>
 <span class="nb">print</span><span class="p">({</span><span class="kc">False</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">5</span><span class="p">})</span>
 </pre></div>
 
@@ -15899,11 +16098,11 @@ True
 </div>
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Useful-links">Useful links<a class="anchor-link" href="#Useful-links">&#182;</a></h2>
+<h2 id="&#1055;&#1086;&#1083;&#1077;&#1079;&#1085;&#1099;&#1077;-&#1089;&#1089;&#1099;&#1083;&#1082;&#1080;">&#1055;&#1086;&#1083;&#1077;&#1079;&#1085;&#1099;&#1077; &#1089;&#1089;&#1099;&#1083;&#1082;&#1080;<a class="anchor-link" href="#&#1055;&#1086;&#1083;&#1077;&#1079;&#1085;&#1099;&#1077;-&#1089;&#1089;&#1099;&#1083;&#1082;&#1080;">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15933,12 +16132,74 @@ True
 </div>
 </div>
 
+</div></section></section>
 </div>
-    </div>
-  </div>
-</body>
+</div>
 
- 
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            transition: "slide",
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        function setScrollingSlide() {
+            var scroll = false
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+
+    }
+
+);
+</script>
+
+</body>
 
 
 </html>
